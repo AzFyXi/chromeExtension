@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "name": "DarkEruption",
+  "manifest_version": 2,
+  "description": "Extension Dark mode de la suite Eruption",
+  "permissions": ["tabs","storage", "<all_urls>", "contextMenus"],
+  "web_accessible_resources": ["css/*.css"],
+  "options_page": "templates/options.html",
+  "offline_enabled": true,
+  "icons": {
+      "48": "icons/eruption.png",
+      "128": "icons/eruption.png"
+  },
+  "browser_action": {
+      "default_icon"    : "icons/eruption.png",
+      "default_popup"   : "templates/popup.html"
+  },
+  "content_scripts": [
+        {
+            "all_frames": true,
+            "match_about_blank": true,
+            "matches": ["<all_urls>"],
+            "run_at": "document_start",
+            "exclude_globs": ["*/chrome/newtab*"],
+            "js": ["js/main.js"]
+        },
+        {
+            "all_frames": true,
+            "match_about_blank": true,
+            "matches": ["<all_urls>"],
+            "run_at": "document_start",
+            "exclude_globs": ["*/chrome/newtab*"],
+            "css": ["css/universal.css"]
+        }
+    ]
+}
